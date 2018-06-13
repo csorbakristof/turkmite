@@ -7,10 +7,10 @@ namespace Turkmite
     {
         public Mat Image { get; }
         public abstract int PreferredIterationCount { get; }
-        private Mat.Indexer<Vec3b> indexer;
-        private int x;
-        private int y;
-        private int direction;  // 0 up, 1 right, 2 down, 3 left
+        protected Mat.Indexer<Vec3b> indexer;
+        protected int x;
+        protected int y;
+        protected int direction;  // 0 up, 1 right, 2 down, 3 left
         public TurkmiteBase(Mat image)
         {
             Image = image;
@@ -30,7 +30,7 @@ namespace Turkmite
             PerformMove(deltaDirection);
         }
 
-        private void PerformMove(int deltaDirection)
+        protected void PerformMove(int deltaDirection)
         {
             direction += deltaDirection;
             direction = (direction + 4) % 4;
