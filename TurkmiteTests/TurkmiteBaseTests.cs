@@ -37,6 +37,24 @@ namespace TurkmiteTests
             AssertTurkmiteState(4, 4, 3);
         }
 
+        [TestMethod]
+        public void ImageBoundaryWorks()
+        {
+            AssertMove(5, 0, 0, 5, 0);
+            AssertMove(5, 9, 2, 5, 9);
+            AssertMove(9, 5, 1, 9, 5);
+            AssertMove(0, 5, 3, 0, 5);
+        }
+
+        private void AssertMove(int startX, int startY, int direction, int finalX, int finalY)
+        {
+            turkmite.X = startX;
+            turkmite.Y = startY;
+            turkmite.D = direction;
+            turkmite.PerformMove(0);
+            AssertTurkmiteState(finalX, finalY, direction);
+        }
+
         private void AssertTurkmiteState(int x, int y, int d)
         {
             Assert.AreEqual(x, turkmite.X);

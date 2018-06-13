@@ -36,8 +36,8 @@ namespace Turkmite
             direction = (direction + 4) % 4;
             x += delta[direction].x;
             y += delta[direction].y;
-            x = Math.Max(0, Math.Min(Image.Cols, x));
-            y = Math.Max(0, Math.Min(Image.Rows, y));
+            x = Math.Max(0, Math.Min(Image.Cols-1, x));
+            y = Math.Max(0, Math.Min(Image.Rows-1, y));
         }
 
         protected abstract (Vec3b newColor, int deltaDirection) GetNextColorAndUpdateDirection(Vec3b currentColor);
