@@ -24,10 +24,10 @@ namespace TurkMite
         class TurkMite
         {
             public Mat Image { get; }
+            private Mat.Indexer<Vec3b> indexer;
             private int x;
             private int y;
             private int direction;  // 0 up, 1 right, 2 down, 3 left
-            private Mat.Indexer<Vec3b> indexer;
             public TurkMite(Mat image)
             {
                 Image = image;
@@ -37,8 +37,9 @@ namespace TurkMite
                 indexer = image.GetGenericIndexer<Vec3b>();
             }
 
-            readonly Vec3b black = new Vec3b(0, 0, 0);
-            readonly Vec3b white = new Vec3b(255, 255, 255);
+            readonly private Vec3b black = new Vec3b(0, 0, 0);
+            readonly private Vec3b white = new Vec3b(255, 255, 255);
+            readonly private (int x,int y)[] delta = new(int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
 
             public void Step()
             {
@@ -49,7 +50,6 @@ namespace TurkMite
             private void PerformMove()
             {
                 direction = (direction + 4) % 4;
-                var delta = new(int x, int y)[] { (0, -1), (1, 0), (0, 1), (-1, 0) };
                 x += delta[direction].x;
                 y += delta[direction].y;
                 x = Math.Max(0, Math.Min(Image.Cols, x));
