@@ -2,3 +2,5 @@
 /.vs/*
 /TurkMite/bin/*
 /TurkMite/obj/*
+/TurkmiteTests/bin/*
+/TurkmiteTests/obj/*
