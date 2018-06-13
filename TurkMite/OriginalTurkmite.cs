@@ -5,8 +5,8 @@ namespace Turkmite
     public class OriginalTurkmite : TurkmiteBase
     {
         public override int PreferredIterationCount => 13000;
-        readonly private Vec3b black = new Vec3b(0, 0, 0);
-        readonly private Vec3b white = new Vec3b(255, 255, 255);
+        readonly protected Vec3b black = new Vec3b(0, 0, 0);
+        readonly protected Vec3b white = new Vec3b(255, 255, 255);
 
         public OriginalTurkmite(Mat image) : base(image)
         {
