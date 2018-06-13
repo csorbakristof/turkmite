@@ -24,9 +24,24 @@ namespace TurkmiteTests
             turkmite.Y = 5;
             turkmite.D = 0;
             turkmite.PerformMove(0);
-            Assert.AreEqual(5, turkmite.X);
-            Assert.AreEqual(4, turkmite.Y);
-            Assert.AreEqual(0, turkmite.D);
+            AssertTurkmiteState(5, 4, 0);
+            turkmite.PerformMove(1);
+            AssertTurkmiteState(6, 4, 1);
+            turkmite.PerformMove(1);
+            AssertTurkmiteState(6, 5, 2);
+            turkmite.PerformMove(1);
+            AssertTurkmiteState(5, 5, 3);
+            turkmite.PerformMove(1);
+            AssertTurkmiteState(5, 4, 0);
+            turkmite.PerformMove(-1);
+            AssertTurkmiteState(4, 4, 3);
+        }
+
+        private void AssertTurkmiteState(int x, int y, int d)
+        {
+            Assert.AreEqual(x, turkmite.X);
+            Assert.AreEqual(y, turkmite.Y);
+            Assert.AreEqual(d, turkmite.D);
         }
 
         class TestTurkmiteBase : TurkmiteBase
