@@ -1,0 +1,4 @@
+/packages/*
+/.vs/*
+/TurkMite/bin/*
+/TurkMite/obj/*
